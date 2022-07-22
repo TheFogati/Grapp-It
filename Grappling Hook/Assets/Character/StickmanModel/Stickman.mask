@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Stickman
+  m_Mask: 00000000000000000100000000000000000000000000000001000000000000000100000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: BodyMesh
+    m_Weight: 1
+  - m_Path: HeadMesh
+    m_Weight: 1
+  - m_Path: Stickman
+    m_Weight: 1
+  - m_Path: Stickman/L_ArmIK
+    m_Weight: 1
+  - m_Path: Stickman/L_ArmIK/L_ArmIK_end
+    m_Weight: 1
+  - m_Path: Stickman/L_Elbow
+    m_Weight: 1
+  - m_Path: Stickman/L_Elbow/L_Elbow_end
+    m_Weight: 1
+  - m_Path: Stickman/L_Knee
+    m_Weight: 1
+  - m_Path: Stickman/L_Knee/L_Knee_end
+    m_Weight: 1
+  - m_Path: Stickman/L_LegIK
+    m_Weight: 1
+  - m_Path: Stickman/L_LegIK/L_LegIK_end
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/L_Leg1
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/L_Leg1/L_Leg2
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/L_Leg1/L_Leg2/L_Foot
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/L_Leg1/L_Leg2/L_Foot/L_Foot_end
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/R_Leg1
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/R_Leg1/R_Leg2
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/R_Leg1/R_Leg2/R_Foot
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/R_Leg1/R_Leg2/R_Foot/R_Foot_end
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/Head
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/Head/Head_end
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/L_Arm1
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/L_Arm1/L_Arm2
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/L_Arm1/L_Arm2/L_Hand
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/L_Arm1/L_Arm2/L_Hand/L_Hand_end
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/R_Arm1
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/R_Arm1/R_Arm2
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/R_Arm1/R_Arm2/R_Hand
+    m_Weight: 1
+  - m_Path: Stickman/Lower_Body/Upper_Body/R_Arm1/R_Arm2/R_Hand/R_Hand_end
+    m_Weight: 1
+  - m_Path: Stickman/R_ArmIK
+    m_Weight: 1
+  - m_Path: Stickman/R_ArmIK/R_ArmIK_end
+    m_Weight: 1
+  - m_Path: Stickman/R_Elbow
+    m_Weight: 1
+  - m_Path: Stickman/R_Elbow/R_Elbow_end
+    m_Weight: 1
+  - m_Path: Stickman/R_Knee
+    m_Weight: 1
+  - m_Path: Stickman/R_Knee/R_Knee_end
+    m_Weight: 1
+  - m_Path: Stickman/R_LegIK
+    m_Weight: 1
+  - m_Path: Stickman/R_LegIK/R_LegIK_end
+    m_Weight: 1
