@@ -6,6 +6,11 @@ public class HookingDetection : MonoBehaviour
 {
     public HookControls hookControl;
 
+    private void Start()
+    {
+        hookControl = GetComponentInParent<HookControls>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "GrapplingSurface")

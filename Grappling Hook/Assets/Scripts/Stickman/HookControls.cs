@@ -10,6 +10,19 @@ public class HookControls : MonoBehaviour
 
     public bool hooked;
 
+    public Vector3 hookStartPosition;
+    public Quaternion hookStartRotation;
+    public Vector3 hookStartScale;
+
+    private void Start()
+    {
+        hook = CharacterControls.hook.gameObject;
+
+        hookStartPosition = hook.transform.localPosition;
+        hookStartRotation = hook.transform.localRotation;
+        hookStartScale = hook.transform.localScale;
+    }
+
     void ShootHook()
     {
         hook.transform.parent = null;
@@ -17,7 +30,6 @@ public class HookControls : MonoBehaviour
 
         rbHook.isKinematic = false;
         rbHook.AddForce(hook.transform.forward * force, ForceMode.Impulse);
-        //rbHook.velocity = new Vector3(rbHook.velocity.x, rbHook.velocity.y, force);
     }
 
     public void CallHookBack()
@@ -29,10 +41,10 @@ public class HookControls : MonoBehaviour
         rbHook.isKinematic = false;
 
         rbHook.velocity = Vector3.zero;
-        
-        hook.transform.localPosition = new Vector3(0, 0, .2f);
-        hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        hook.transform.localScale = Vector3.one;
+
+        hook.transform.localPosition = hookStartPosition;
+        hook.transform.localRotation = hookStartRotation;
+        hook.transform.localScale = hookStartScale;
 
         rbHook.isKinematic = true;
     }
@@ -42,6 +54,7 @@ public class HookControls : MonoBehaviour
         hooked = true;
 
         hook.transform.parent = surface;
+
         Rigidbody rbHook = hook.GetComponent<Rigidbody>();
 
         rbHook.velocity = Vector3.zero;
