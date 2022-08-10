@@ -1,0 +1,11 @@
+{
+    "ads_settings": {
+        "saymed_app_id": "hap7yya",
+        "saymed_enabled": 1,
+        "saymed_interstitial_id": "35Y26Rx",
+        "saymed_rewarded_id": "35Y26TD",
+        "skip_after_interstitial": 20,
+        "skip_after_rewarded": 25,
+        "skip_after_start": 20
+    }
+}
