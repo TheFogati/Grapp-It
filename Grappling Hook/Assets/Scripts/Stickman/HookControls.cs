@@ -5,7 +5,7 @@ using UnityEngine;
 public class HookControls : MonoBehaviour
 {
     public GameObject hook;
-    public float force;
+    float force;
     public Transform gun;
 
     public bool hooked;
@@ -14,13 +14,21 @@ public class HookControls : MonoBehaviour
     public Quaternion hookStartRotation;
     public Vector3 hookStartScale;
 
+    AudioSource audio;
+    public AudioClip shootHook;
+    public AudioClip hooking;
+
     private void Start()
     {
+        force = 15000;
+
         hook = CharacterControls.hook.gameObject;
 
         hookStartPosition = hook.transform.localPosition;
         hookStartRotation = hook.transform.localRotation;
         hookStartScale = hook.transform.localScale;
+
+        audio = GetComponent<AudioSource>();
     }
 
     void ShootHook()
@@ -29,7 +37,10 @@ public class HookControls : MonoBehaviour
         Rigidbody rbHook = hook.GetComponent<Rigidbody>();
 
         rbHook.isKinematic = false;
-        rbHook.AddForce(hook.transform.forward * force, ForceMode.Impulse);
+        rbHook.AddForce(hook.transform.forward * force * Time.deltaTime, ForceMode.Impulse);
+
+        audio.clip = shootHook;
+        audio.Play();
     }
 
     public void CallHookBack()
@@ -59,5 +70,8 @@ public class HookControls : MonoBehaviour
 
         rbHook.velocity = Vector3.zero;
         rbHook.isKinematic = true;
+
+        audio.clip = hooking;
+        audio.Play();
     }
 }

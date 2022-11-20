@@ -5,24 +5,42 @@ using UnityEngine.UI;
 
 public class ChangeTabs : MonoBehaviour
 {
-    public Image showcase;
-    public Sprite[] showing;
+    public StoreManager storeManager;
+    [Space]
+    public Animator character;
+    public GameObject charFocus;
     [Space]
     public GameObject characterTab;
     public GameObject grapplingTab;
+    bool hookFocusing;
+
+    private void Update()
+    {
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
+        character.SetBool("HookFocus", hookFocusing);
+    }
 
     public void CharacterChange()
     {
         characterTab.SetActive(true);
         grapplingTab.SetActive(false);
-        showcase.sprite = showing[0];
+
+        hookFocusing = false;
+        charFocus.SetActive(true);
+
+        storeManager.SelectStickman(StoreManager.stickman);
     }
 
     public void GrapplingChange()
     {
         characterTab.SetActive(false);
         grapplingTab?.SetActive(true);
-        showcase.sprite = showing[1];
+
+        hookFocusing = true;
+        charFocus.SetActive(false);
+
+        storeManager.SelectGrappling(StoreManager.grappling);
     }
 
     public void ChooseEpic(GameObject e)

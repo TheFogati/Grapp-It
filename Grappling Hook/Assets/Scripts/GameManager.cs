@@ -40,10 +40,21 @@ public class EpicGrapplingHook
 
 public class GameManager : MonoBehaviour
 {
+    public bool controlEnabled = true;
+
     public SimpleStickman[] simpleStickman;
     public EpicStickman[] epicStickman;
     public SimpleGrapplingHook[] simpleGrapplingHook;
     public EpicGrapplingHook[] epicGrapplingHook;
+    [Space]
+    public int stickmenPrice;
+    public int grapplingHooksPrice;
+    [Space]
+    public int money;
+    [Space]
+    public int unlockEpicValue;
+    public bool unlockStick;
+
     #region Don't Destroy
     public static GameManager manager;
     void Awake()

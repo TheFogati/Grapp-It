@@ -6,18 +6,21 @@ TagManager:
   tags:
   - Ground
   - GrapplingSurface
+  - Hazard
+  - WinTrigger
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
   - GrapplingSurface
   - L_Leg
   - R_Leg
-  - 
+  - Bits
   - 
   - 
   - 

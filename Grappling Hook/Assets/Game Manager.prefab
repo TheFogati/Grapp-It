@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2532407407515898608
 MonoBehaviour:
@@ -44,15 +44,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4561d6487de146044803330540d9abc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlEnabled: 0
   simpleStickman:
   - name: Randy
-    model: {fileID: 313789438316333353, guid: 18d0dae9a062f18419bd9c2d4b7f2e3d, type: 3}
+    model: {fileID: 6391045324904230602, guid: 18d0dae9a062f18419bd9c2d4b7f2e3d, type: 3}
     isUnlocked: 1
     isSelected: 1
-  epicStickman: []
+  - name: Top Hat
+    model: {fileID: 6391045324904230602, guid: df321568964e2de43a861d1daebf9f9e, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Groucho Glasses
+    model: {fileID: 6391045324904230602, guid: 05c4e67a44835014e9e017733f8c46fb, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Mrs. Marocas' Hat
+    model: {fileID: 6391045324904230602, guid: abed1ebfaf326eb49bb6459f83592ee9, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Fedora
+    model: {fileID: 6391045324904230602, guid: 1194417dcb1375b4a8b48dd938f9a4bb, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Paper Bag
+    model: {fileID: 6391045324904230602, guid: 9fc492f4df6eb5d45bdbe73a652343e9, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  epicStickman:
+  - name: Stickbot
+    model: {fileID: 6077667986961031066, guid: 8182880d7bf7c3b439a0adcd66846c56, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Armored
+    model: {fileID: 7420711548554195043, guid: b21ec076268cd104dac5b0d52ccac8e0, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Skeleton
+    model: {fileID: 2021241043555751580, guid: 2311493c81c0eb14482740d6f2fb24ff, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Two Piece Suit
+    model: {fileID: 3375904308689902184, guid: 967ce3265d5ec7d43945e1ca7856c6cb, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Pumpkin Man
+    model: {fileID: 6967389936632708421, guid: 14c9ff1a9f8fa5e4fac750a74039030c, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Sticky the Clown
+    model: {fileID: 4894412383477171231, guid: 81ba150d45571aa4bba3b1edff47925b, type: 3}
+    isUnlocked: 0
+    isSelected: 0
   simpleGrapplingHook:
   - name: Trusty Rusty
     model: {fileID: 1962092004093047233, guid: ff873d86b28edbd4abdb00e152fefa8c, type: 3}
     isUnlocked: 1
     isSelected: 1
+  - name: Trusty Rusty Blue
+    model: {fileID: 2450003810513878675, guid: 4d52cca1e501fe14abb2ff34a7d1e831, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Trusty Rusty Pink
+    model: {fileID: 1730064698467924986, guid: c7c25da0a1cb93a4db89d7c09f1454b7, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Trusty Rusty Red
+    model: {fileID: 8531508629516878279, guid: 5acbf0e7a311a00409c68aeeace2db39, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Trusty Rusty Black
+    model: {fileID: 1962092004093047233, guid: 12e05d25445c2944ca7ed9fa952f7973, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Trusty Rusty Teal
+    model: {fileID: 1962092004093047233, guid: 874832ce214d0684eb116e9f09648cfc, type: 3}
+    isUnlocked: 0
+    isSelected: 0
   epicGrapplingHook: []
+  stickmenPrice: 200
+  grapplingHooksPrice: 200
+  money: 90000
+  unlockEpicValue: 0
+  unlockStick: 1

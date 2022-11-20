@@ -8,7 +8,7 @@ public class CharacterControls : MonoBehaviour
     Rigidbody rb;
 
     [Header("Movement")]
-    public float holdTime;
+    float holdTime;
     public float speed;
     public float jumpForce;
     public string[] deathTags;
@@ -24,7 +24,7 @@ public class CharacterControls : MonoBehaviour
     public HookControls hookControl;
     public GameObject gun;
     static public Transform hook;
-    public float hookForce;
+    float hookForce;
 
     public static bool alive;
 
@@ -36,8 +36,19 @@ public class CharacterControls : MonoBehaviour
     RaycastHit groundDistance;
     string groundName;
 
+    public GameObject winCam;
+    public static bool win;
+    bool oneWin;
+
+
     void Start()
     {
+        oneWin = true;
+        win = false;
+
+        hookForce = 2000;
+        holdTime = .18f;
+
         alive = true;
 
         anim = GetComponentInChildren<Animator>();
@@ -51,66 +62,85 @@ public class CharacterControls : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         Alive(true);
+
+        
     }
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheck, whatIsGround);
-
-        anim.SetBool("Grounded", isGrounded);
-
-        if (!hookControl.hooked)
+        if(GameManager.manager.controlEnabled)
         {
-            if(isGrounded)
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
+            isGrounded = Physics.CheckSphere(groundCheck.position, radiusCheck, whatIsGround);
 
-            if (Vector3.Distance(hook.position, transform.position) > 25)
+            anim.SetBool("Grounded", isGrounded);
+
+            if (!hookControl.hooked)
             {
-                grappling = false;
-                anim.SetBool("Grappling", false);
-                hookControl.CallHookBack();
-                releaseMe = true;
-            }
-        }
-        else
-        {
-            Vector3 f = hook.position - transform.position;
-            rb.AddForce(f.normalized * hookForce);
+                if (isGrounded)
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
 
-            if(hook.position.z - transform.position.z <= - 4)
+                if (Vector3.Distance(hook.position, transform.position) > 25)
+                {
+                    grappling = false;
+                    anim.SetBool("Grappling", false);
+                    hookControl.CallHookBack();
+                    releaseMe = true;
+                }
+            }
+            else
             {
-                grappling = false;
-                anim.SetBool("Grappling", false);
-                hookControl.CallHookBack();
-                releaseMe = true;
+                Vector3 f = hook.position - transform.position;
+                rb.AddForce(f.normalized * hookForce * Time.deltaTime);
+
+                if (hook.position.z - transform.position.z <= -4)
+                {
+                    grappling = false;
+                    anim.SetBool("Grappling", false);
+                    hookControl.CallHookBack();
+                    releaseMe = true;
+                }
             }
-        }
 
-        Commands();
-        /*
-        if(transform.position.y >= 2 && !grappling)
-            roll = true;
-        */
+            Commands();
+            /*
+            if(transform.position.y >= 2 && !grappling)
+                roll = true;
+            */
 
-        if(Physics.Raycast(transform.position, Vector3.down ,out groundDistance))
-        {
-            if (groundDistance.collider.name != groundName)
+            if (Physics.Raycast(transform.position, Vector3.down, out groundDistance))
+            {
+                if (groundDistance.collider.name != groundName)
+                    roll = false;
+
+                if (groundDistance.collider.tag == "Ground")
+                {
+                    groundName = groundDistance.collider.name;
+                    if (Vector2.Distance(transform.position, groundDistance.point) >= 2)
+                        roll = true;
+                }
+            }
+
+            anim.SetBool("Roll", roll);
+            anim.SetFloat("JumpValue", rb.velocity.y);
+
+            if (isGrounded || grappling)
                 roll = false;
-
-            if (groundDistance.collider.tag == "Ground")
-            {
-                groundName = groundDistance.collider.name;
-                if (Vector2.Distance(transform.position, groundDistance.point) >= 2)
-                    roll = true;
-            }
         }
 
-        anim.SetBool("Roll", roll);
-        anim.SetFloat("JumpValue", rb.velocity.y);
+        if(win)
+        {
+            GameManager.manager.controlEnabled = false;
+            winCam.SetActive(true);
+            
 
-        if (isGrounded || grappling)
-            roll = false;
-
+            if (oneWin)
+            {
+                rb.velocity = Vector3.zero;
+                anim.SetTrigger("Win");
+                oneWin = false;
+            }
+                
+        }
     }
 
     void Commands()
@@ -195,6 +225,22 @@ public class CharacterControls : MonoBehaviour
         {
             if (collision.gameObject.tag == s)
                 Alive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        foreach (string s in deathTags)
+        {
+            if (other.gameObject.tag == s)
+                Alive(false);
+        }
+
+        if (other.tag == "WinTrigger")
+        {
+            win = true;
+            GameManager.manager.unlockEpicValue += 15;
+            SaveSystem.SaveGame();
         }
     }
 

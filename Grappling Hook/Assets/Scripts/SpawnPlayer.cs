@@ -7,7 +7,7 @@ public class SpawnPlayer : MonoBehaviour
     GameObject stickman;
     [SerializeField]public static GameObject grapplingGun;
 
-    void Start()
+    void Awake()
     {
         foreach (SimpleStickman ss in GameManager.manager.simpleStickman)
         {
