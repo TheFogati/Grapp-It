@@ -20,7 +20,7 @@ public class HookControls : MonoBehaviour
 
     private void Start()
     {
-        force = 15000;
+        force = 1300;
 
         hook = CharacterControls.hook.gameObject;
 

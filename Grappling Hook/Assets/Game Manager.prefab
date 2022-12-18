@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2532407407515898608
 MonoBehaviour:
@@ -120,7 +120,27 @@ MonoBehaviour:
     model: {fileID: 1962092004093047233, guid: 874832ce214d0684eb116e9f09648cfc, type: 3}
     isUnlocked: 0
     isSelected: 0
-  epicGrapplingHook: []
+  epicGrapplingHook:
+  - name: Da Claw
+    model: {fileID: 1962092004093047233, guid: 80f01205f4f6df24a9ecd46dcc99c4d2, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: LEPO Grappler
+    model: {fileID: 1962092004093047233, guid: 3fcdb231241c6b54bb127458a38b6cfe, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Wrist Grappler
+    model: {fileID: 1962092004093047233, guid: 0ba5a3e7e37c9644f9dd19be5593c01d, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Chained Skull
+    model: {fileID: 4371618192010246343, guid: ec5c59f157d48724fa3c3bfb2ebd06ee, type: 3}
+    isUnlocked: 0
+    isSelected: 0
+  - name: Blaster Grappler
+    model: {fileID: 1962092004093047233, guid: 72e685d8ab962a34fbe71e6b8abd2c5a, type: 3}
+    isUnlocked: 0
+    isSelected: 0
   stickmenPrice: 200
   grapplingHooksPrice: 200
   money: 90000

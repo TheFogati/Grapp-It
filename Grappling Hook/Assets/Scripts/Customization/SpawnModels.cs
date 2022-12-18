@@ -50,11 +50,28 @@ public class SpawnModels : MonoBehaviour
             if (GameManager.manager.simpleGrapplingHook[n].isSelected)
                 hookShown = simpleHookModel[n];
         }
+        for (int n = 0; n < GameManager.manager.epicGrapplingHook.Length; n++)
+        {
+            if (GameManager.manager.epicGrapplingHook[n].isSelected)
+                hookShown = epicHookModel[n];
+        }
 
         for (int i = 0; i < GameManager.manager.simpleStickman.Length; i++)
         {
             if(GameManager.manager.simpleStickman[i].isSelected)
+            {
+                StoreManager.epicStickman = false;
                 SelectCharacter(i);
+            }
+                
+        }
+        for (int i = 0; i < GameManager.manager.epicStickman.Length; i++)
+        {
+            if (GameManager.manager.epicStickman[i].isSelected)
+            {
+                StoreManager.epicStickman = true;
+                SelectCharacter(i);
+            }
         }
     }
 }

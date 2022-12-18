@@ -9,8 +9,8 @@ public class CharacterControls : MonoBehaviour
 
     [Header("Movement")]
     float holdTime;
-    public float speed;
-    public float jumpForce;
+    float speed;
+    float jumpForce;
     public string[] deathTags;
 
     [Header("Check Ground")]
@@ -40,14 +40,21 @@ public class CharacterControls : MonoBehaviour
     public static bool win;
     bool oneWin;
 
+    bool canJump;
+
 
     void Start()
     {
+        speed = 5;
+        jumpForce = 30;
+
+        canJump = false;
+
         oneWin = true;
         win = false;
 
-        hookForce = 2000;
-        holdTime = .18f;
+        hookForce = 1250;
+        holdTime = .15f;
 
         alive = true;
 
@@ -76,6 +83,8 @@ public class CharacterControls : MonoBehaviour
 
             if (!hookControl.hooked)
             {
+                rb.mass = 1f;
+
                 if (isGrounded)
                     rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
 
@@ -89,8 +98,14 @@ public class CharacterControls : MonoBehaviour
             }
             else
             {
+                rb.mass = .65f;
+
                 Vector3 f = hook.position - transform.position;
                 rb.AddForce(f.normalized * hookForce * Time.deltaTime);
+
+                if (rb.velocity.z >= 10)
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 7);
+                
 
                 if (hook.position.z - transform.position.z <= -4)
                 {
@@ -141,17 +156,21 @@ public class CharacterControls : MonoBehaviour
             }
                 
         }
+
     }
 
     void Commands()
     {
-        if (Input.GetKey(KeyCode.J))
+        if (Grapple.grappling)
         {
             if(!releaseMe)
             {
+                canJump = true;
+
                 timeHolding += Time.deltaTime;
                 if (timeHolding >= holdTime)
                 {
+                    canJump = false;
                     grappling = true;
                     anim.SetBool("Grappling", true);
                 }
@@ -162,7 +181,7 @@ public class CharacterControls : MonoBehaviour
             hookControl.CallHookBack();
         }
 
-        if (Input.GetKeyUp(KeyCode.J))
+        if (!Grapple.grappling)
         {
             releaseMe = false;
 
@@ -170,8 +189,12 @@ public class CharacterControls : MonoBehaviour
             {
                 if (isGrounded)
                 {
-                    rb.AddForce(Vector3.up * (jumpForce * 10));
-                    anim.SetTrigger("Jump");
+                    if(canJump)
+                    {
+                        rb.AddForce(Vector3.up * (jumpForce * 10));
+                        anim.SetTrigger("Jump");
+                        canJump = false;
+                    }
                 }
             }
             else

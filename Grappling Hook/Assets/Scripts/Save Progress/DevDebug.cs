@@ -66,6 +66,11 @@ public class DevDebug : MonoBehaviour
         GameManager.manager.simpleStickman[0].isSelected = true;
         GameManager.manager.simpleGrapplingHook[0].isSelected = true;
 
+        GameManager.manager.stickmenPrice = 200;
+        GameManager.manager.grapplingHooksPrice = 200;
+
+        GameManager.manager.money = 0;
+
         SaveSystem.SaveGame();
 
         SceneManager.LoadScene(0);
